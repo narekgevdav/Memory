@@ -6,14 +6,14 @@ function  Cell(props){
     const [item, setItem]=useState()
     
     const handleOnClick = (e, item)=>{
-    setItem(props.item)    
-    console.log(props.checkData(e.target.attributes.name.value))
+    setItem(props.value)    
+    //console.log(props.checkData(e.target.attributes.name.value))
 
     }
 
     return(
         <div
-        name = {props.item} 
+        name = {props.id} 
         style = {{boxSizing: 'border-box',
         display: style,
         float: 'left',
