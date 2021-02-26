@@ -13,18 +13,20 @@ const randomArray = shuffleArray(input)
 const StoreContext = createContext()
 let data = []
 for (let index = 0; index < randomArray.length; index++) {
-    data.push({id: index, value: randomArray[index], status: closed},)
+    data.push({id: index+1, value: randomArray[index], status: "closed"},)
 }
-const intialState = {data: data,compare:[]}
+const intialState = {data: data, compare:[]}
 
 
 
 const reducer = (state,action) => {
     switch(action.type){
-        case "changeFirstName":{
+        case "addFirstValue":{
+          console.log(action)
             return {
                 ...state,
-                firstName: action.firstName
+                data: [...data, data[data.findIndex(x => x.id === action.data[1])].status="opened"],
+                compare: [...state.compare, action.data[0]]
             }
         }
         
