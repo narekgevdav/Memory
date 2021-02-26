@@ -20,10 +20,22 @@ function  Cell(props){
     
     const handleOnClick = ()=>{
         console.log(state.compare)
-         if(!state.compare){
-          dispatch({type: 'addFirstValue', data: [props.value, props.id]})
-          console.log(state)
+         if(state.compare.length<1){
+          dispatch({type: 'addValue', data: [props.value, props.id]})          
+         }else if (state.compare.length==1){
+            dispatch({type: 'addSecondValue', data: [props.value, props.id]})
+            
+            
+         } else {
+            console.log(state.compare)
+            if(state.compare[0].value = state.compare[1].value){
+                console.log('match')
+            } else {
+                console.log('do not match')
+            }
+            //dispatch({type: 'resetCompare'})
          }
+         
     }
 
     return(

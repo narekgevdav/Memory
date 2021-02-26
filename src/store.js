@@ -20,14 +20,27 @@ const intialState = {data: data, compare:[]}
 
 
 const reducer = (state,action) => {
+  console.log(state.data[action.data[0]-1].status)
     switch(action.type){
-        case "addFirstValue":{
-          console.log(action)
-            return {
+        case "addValue":{
+               return {
                 ...state,
-                data: [...data, data[data.findIndex(x => x.id === action.data[1])].status="opened"],
-                compare: [...state.compare, action.data[0]]
+                data: [...state.data, data[data.findIndex(x => x.id === action.data[1])].status="opened"],
+                compare: [{id: action.data[1], value:action.data[0]}]
             }
+        }
+        case "addSecondValue":{
+          return {
+           ...state,
+           data: [...state.data, data[data.findIndex(x => x.id === action.data[1])].status="opened"],
+           compare: [...state.compare, {id: action.data[1], value:action.data[0]}]
+       }
+   }
+        case "resetCompare": {
+          return{
+            ...state,
+            compare: []
+          }
         }
         
         
